@@ -1,0 +1,63 @@
+<!-- <div class="grid" *ngIf="false">
+    <div class="col" *ngFor="let player of players">
+        <p-card [header]=player.name [subheader]="[player.nationality] + ' Footballer'" [style]="{ width: '360px' }">
+            <ng-template pTemplate="header">
+                <img alt="Card" [src]=player.image />
+            </ng-template>
+            <p [ngClass]="{
+                'text-success':player.nationality === 'English',
+                'text-warning':player.nationality !== 'English'
+                }">
+                {{player.description}}
+            </p>
+            <ng-template pTemplate="footer">
+                <p-button label="Save" icon="pi pi-check" (click)="onClickSave(player.id)"></p-button>
+                <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+</div> -->
+
+<div class="container todo-container">
+    <div class="row justify-content-around">
+        <div class="col-lg-8">
+            <div class="top-section d-flex justify-content-between align-items-center">
+                <form action="" class="add-task d-flex">
+                    <input type="text" class="text-box" name="tasktext" id="" [(ngModel)]="taskEntry.title" placeholder="Add a task..">
+                    <button type="submit" class="btn btn-white" (click)="addTask()">
+                        <span class="pi pi-check"></span>
+                    </button>
+                </form>
+                <form action="" class="filter d-flex">
+                    <input type="text" class="text-box" name="" id="" placeholder="Search a task">
+                    <button type="submit" class="btn btn-white">
+                        <!-- <span class="form-btn-text">Search</span> -->
+                        <span class="pi pi-search"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-8"> 
+            <div class="task-tracker">
+                <ul *ngFor="let task of tasks">
+                    <li class="d-flex justify-content-between">
+                        <p class="title" [class.completed]="task.completed">
+                            {{task.title}}
+                        </p>
+                        <div class="actions">
+                            <span [ngStyle]="{ 'display': task.completed ? 'none' : 'inline' }">
+                                <i class="pi pi-check-circle" (click)="completeTask(task)"></i>
+                            </span>
+                            <span [ngStyle]="{ 'display': task.completed ? 'none' : 'inline' }">
+                                <i class="pi pi-pencil" (click)="setTaskEntry(task)"></i>
+                            </span>
+                            <span>
+                                <i class="pi pi-trash" (click)="deleteTask(task.id)"></i>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,98 @@
+.text-success{
+    color: rgb(57, 179, 57);
+}
+
+.text-warning{
+    color: rgb(216, 166, 57);
+}
+
+.todo-container{
+    position: absolute;
+    background-color: #721121;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding: 20px 0;
+}
+
+.btn-white{
+    transition: .2s ease-in-out;
+    margin-left: 1px;
+}
+
+.btn-white:hover{
+    background-color: #FFC07F;
+}
+
+.btn-white, input{
+    font-weight: bold;
+    height: 100%;
+    color: #721121;
+}
+
+.form-btn-text{
+    display: inline-block;
+    transform: translateY(-1px);
+    margin-right: 10px;
+}
+
+.top-section{
+    margin: 10px 0;
+}
+
+input:focus-visible {
+    box-shadow: inset 0px 0px 0px 1px #FFC07F;
+    outline: none;
+}
+
+.text-box, .btn-white{
+    background-color: #FFF;
+    color: #721121;
+    border: none;
+    border-radius: 0px;
+    padding: 10px;
+    height: 40px;
+    box-shadow: none;
+}
+
+.task-tracker ul{
+    margin: 0;
+    padding: 0;
+}
+
+.task-tracker >>> i:before{
+    color: #FFC07F;
+}
+
+p,h1,h2,h3,h4,h5{
+    color: #FFC07F;
+    margin: unset;
+    font-family: "Dela Gothic One", sans-serif;
+}
+
+.task-tracker >>> li{
+    background-color: #A5402D;
+    padding: 10px;
+}
+
+.actions i::before{
+    transition: .2s ease-in-out;
+}
+
+.actions span{
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.actions span:hover i::before{
+    color: #FFF;
+}
+
+.completed{
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #dcdcdc;
+}
