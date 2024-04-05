@@ -1,29 +1,29 @@
 {
-    "tasks": [
-        {
-            "id": 1,
-            "title": "Get your eid suit",
-            "completed": false
-        },
-        {
-            "id": 2,
-            "title": "Complete angular in max 3 weeks",
-            "completed": false
-        },
-        {
-            "id": 3,
-            "title": "Find a new place to live",
-            "completed": true
-        },
-        {
-            "id": 4,
-            "title": "Get your mobile screen a new protector",
-            "completed": false
-        },
-        {
-            "id": 5,
-            "title": "Attend trainee catchup call",
-            "completed": true
-        }
-    ]
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Get your eid suit",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "yes tyes",
+      "completed": false
+    },
+    {
+      "id": "3",
+      "title": "Find a new place to live",
+      "completed": true
+    },
+    {
+      "id": "4",
+      "title": "Get your mobile screen a new protector",
+      "completed": false
+    },
+    {
+      "id": "5",
+      "title": "Attend trainee catchup call",
+      "completed": true
+    }
+  ]
 }

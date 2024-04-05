@@ -7,64 +7,48 @@ import { Task } from '../todo/taskInterface';
   { providedIn: 'root' }
 )
 export class TaskService {
+
+  //region variables
+  baseUrl:string = "http://localhost:3000/tasks";
+  filter:string = '';
+
+  updatedSuccessMsg:string = 'successfully updated';
+  addedSuccessMsg:string = 'successfully added';
+  emptyString:string = '';
+  //endregion
+
   constructor(private http: HttpClient) { }
 
   // Contains all the tasks existing
-  tasks: Task[] = [
-    { id: 1, title: "Get your eid suit", completed: false },
-    { id: 2, title: "Complete angular in max 3 weeks", completed: false },
-    { id: 3, title: "Find a new place to live", completed: true },
-    { id: 4, title: "Get your mobile screen a new protector", completed: false },
-    { id: 5, title: "Attend trainee catchup call", completed: true },
-  ]
+  tasks: Task[] = []
 
-  getTasks(): Task[] {
-    return this.tasks;
+  getTasks(): Observable<Task[]>{
+    return this.http.get<Task[]>(this.baseUrl);
   }
 
   completeTask(task: Task) {
     for (let t of this.tasks) {
       if (t.id === task.id) {
         t.completed = true;
-        console.log("Task: " + t.title + " is now completed.\n", t);
-        return;
+        this.http.put(`${this.baseUrl}/${task.id}`, task);
       }
     }
   }
 
-  addTask(taskEntry: Task): boolean {
+  addTask(taskEntry: Task) {
     console.log(taskEntry);
-
     // will check if task is being added or edited
-    try {
-      const isTaskEdit = taskEntry.id !== -1;
-
-      if (isTaskEdit) {
-        const existingTaskIndex = this.tasks.findIndex(task => task.id === taskEntry.id);
-
-        this.tasks[existingTaskIndex].title = taskEntry.title;
-        this.tasks[existingTaskIndex].completed = taskEntry.completed;
-      }
-      else {
-        const newTaskId = Math.floor(Math.random() * 1000);
-
-        this.tasks.push({
-          id: newTaskId,
-          title: taskEntry.title,
-          completed: false
-        })
-      }
-
-      return true;
-    }
-    catch (error) {
-      console.log(error);
-      return false;
+    const isTaskEdit = taskEntry.id !== this.emptyString;
+    if (isTaskEdit) {
+      return this.http.put(`${this.baseUrl}/${taskEntry.id}`, taskEntry);
+    } else {
+      taskEntry.id = (Math.floor(Math.random() * 1000)).toString();
+      return this.http.post(this.baseUrl, taskEntry);
     }
   }
 
-  deleteTask(id: number) {
-    this.tasks = this.tasks.filter(task => task.id !== id);
+  deleteTask(id: string) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
 
